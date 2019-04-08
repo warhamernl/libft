@@ -6,28 +6,99 @@
 #    By: mlokhors <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/22 11:58:38 by mlokhors      #+#    #+#                  #
-#    Updated: 2019/03/22 12:07:56 by mlokhors      ########   odam.nl          #
+#    Updated: 2019/04/08 12:55:10 by mlokhors      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
+OBJECT_NAMES=ft_memcpy \
+			 ft_memset \
+			 ft_memmove \
+			 ft_bzero \
+			 ft_memccpy \
+			 ft_memchr \
+			 ft_memcmp \
+			 ft_strlen \
+			 ft_strdup \
+			 ft_strcpy \
+			 ft_strncpy \
+			 ft_strcat \
+			 ft_strncat \
+			 ft_strlcat \
+			 ft_strchr \
+			 ft_strrchr \
+			 ft_strstr \
+			 ft_strnstr \
+			 ft_strcmp \
+			 ft_strncmp \
+			 ft_atoi \
+			 ft_isalpha \
+			 ft_isdigit \
+			 ft_isalnum \
+			 ft_isascii \
+			 ft_isprint \
+			 ft_toupper \
+			 ft_tolower \
+			 ft_memalloc \
+			 ft_memdel \
+			 ft_strnew \
+			 ft_strdel \
+			 ft_strclr \
+			 ft_striter \
+			 ft_striteri \
+			 ft_strmap \
+			 ft_strmapi \
+			 ft_strequ \
+			 ft_strnequ \
+			 ft_strsub \
+			 ft_strjoin \
+			 ft_strtrim \
+			 ft_itoa \
+			 ft_strsplit \
+			 ft_putchar \
+			 ft_putstr \
+			 ft_putendl \
+			 ft_putnbr \
+			 ft_putchar_fd \
+			 ft_putstr_fd \
+			 ft_putendl_fd \
+			 ft_putnbr_fd \
+			 ft_isspace \
+			 ft_lstnew \
+			 ft_lstdelone \
+			 ft_lstdel \
+			 ft_lstadd \
+			 ft_lstiter \
+			 ft_lstmap \
+			 ft_countwords \
+			 ft_strrev \
+			 ft_itoa_base \
+			 ft_iswhitespace \
+
+
 NAME=libft.a
 CC=gcc
-FLAGS=-Werror -Wextra -Wall
-SRC=
-OBJECT=
-HEAD=./includes
+FLAGS=-Werror -Wextra -Wall -I./
+OBJ=$(patsubst %, %.o, $(OBJECT_NAMES))
 
 all: $(NAME)
 
-$(NAME):
-		$(CC) -c $(FLAGS) $(SRC) -I$(HEAD)
-		ar rc $@ $(OBJECT)
-		ranlib $(NAME)
+$(NAME): $(OBJ)
+	@echo "Making library"
+	@ar rc $@ $(OBJ)
+	@ranlib $(NAME)
+
+%.o: %.c
+	@echo "Making object $@"
+	@$(CC) -c -o $@ $^ $(FLAGS)
 
 clean:
-		rm -f $(OBJECT)
+	@echo Cleaning objects
+	@rm -f $(OBJ)
 
 fclean: clean
-		rm -f $(NAME)
+	@echo Cleaning libft
+	@rm -f $(NAME)
+
+
 
 re: fclean all
