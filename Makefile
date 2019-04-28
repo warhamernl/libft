@@ -6,7 +6,7 @@
 #    By: mlokhors <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/22 11:58:38 by mlokhors      #+#    #+#                  #
-#    Updated: 2019/04/08 12:55:10 by mlokhors      ########   odam.nl          #
+#    Updated: 2019/04/28 16:50:06 by mlokhors      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ OBJECT_NAMES=ft_memcpy \
 
 NAME=libft.a
 CC=gcc
-FLAGS=-Werror -Wextra -Wall -I./
+FLAGS=-Werror -Wextra -Wall -I./includes
 OBJ=$(patsubst %, %.o, $(OBJECT_NAMES))
 
 all: $(NAME)
