@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_strcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mlokhors <marvin@codam.nl>                   +#+                     */
+/*   By: mlokhors <mlokhors@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/18 19:07:03 by mlokhors      #+#    #+#                 */
-/*   Updated: 2019/04/05 13:26:02 by mlokhors      ########   odam.nl         */
+/*   Created: 2019/03/18 19:07:03 by mlokhors       #+#    #+#                */
+/*   Updated: 2019/04/12 12:56:04 by mlokhors      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: mlokhors <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/30 19:36:16 by mlokhors      #+#    #+#                 */
-/*   Updated: 2019/04/08 11:05:32 by mlokhors      ########   odam.nl         */
+/*   Updated: 2019/04/08 17:06:07 by mlokhors      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,12 @@ static char	**take_word(const char *s, char c, unsigned int words, char **split)
 		{
 			split[word_n] = ft_strsub(s, i, (size_t)word_length);
 			if (word_n < words)
-			{
 				word_n++;
-				split[word_n] = NULL;
-			}
 			i = word_length + i - 1;
 		}
 		i++;
 	}
+	split[word_n] = NULL;
 	return (split);
 }
 
