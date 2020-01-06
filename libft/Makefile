@@ -3,14 +3,20 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: mlokhors <marvin@codam.nl>                   +#+                      #
+#    By: mlokhors <mlokhors@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2019/03/22 11:58:38 by mlokhors      #+#    #+#                  #
-#    Updated: 2019/04/28 16:50:06 by mlokhors      ########   odam.nl          #
+#    Created: 2019/08/02 12:58:17 by mlokhors       #+#    #+#                 #
+#    Updated: 2019/09/29 10:01:10 by mlokhors      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-OBJECT_NAMES=ft_memcpy \
+NAME = libft.a
+SRC_DIR = ./
+OBJ_DIR = ./.obj/
+FLAGS = -Wall -Werror -Wextra -I./includes
+CC = gcc
+
+OBJ_NAMES =  ft_memcpy \
 			 ft_memset \
 			 ft_memmove \
 			 ft_bzero \
@@ -73,32 +79,27 @@ OBJECT_NAMES=ft_memcpy \
 			 ft_strrev \
 			 ft_itoa_base \
 			 ft_iswhitespace \
+			 ft_power \
+			 ft_numlen_ull \
+			 get_next_line \
 
 
-NAME=libft.a
-CC=gcc
-FLAGS=-Werror -Wextra -Wall -I./includes
-OBJ=$(patsubst %, %.o, $(OBJECT_NAMES))
+
+OBJS = $(patsubst %, $(OBJ_DIR)/%.o, $(OBJ_NAMES))
+SRCS = $(patsubst %, $(SRC_DIR)/%.c, $(OBJ_NAMES))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@echo "Making library"
-	@ar rc $@ $(OBJ)
-	@ranlib $(NAME)
+$(NAME) : $(OBJS) 
+		ar crs $(NAME) $(OBJS)
 
-%.o: %.c
-	@echo "Making object $@"
-	@$(CC) -c -o $@ $^ $(FLAGS)
-
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
+		mkdir -p $(OBJ_DIR)
+		$(CC) -c -o $@ $< $(FLAGS)
 clean:
-	@echo Cleaning objects
-	@rm -f $(OBJ)
+		rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo Cleaning libft
-	@rm -f $(NAME)
-
-
+		rm -f $(NAME)
 
 re: fclean all

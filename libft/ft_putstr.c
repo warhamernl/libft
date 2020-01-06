@@ -1,42 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strjoin.c                                       :+:    :+:            */
+/*   ft_putstr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mlokhors <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/27 22:11:16 by mlokhors      #+#    #+#                 */
-/*   Updated: 2019/04/06 21:39:27 by mlokhors      ########   odam.nl         */
+/*   Created: 2019/03/28 12:59:58 by mlokhors       #+#    #+#                */
+/*   Updated: 2019/09/25 23:17:16 by mlokhors      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_putstr(char const *s)
 {
-	char	*new_strink;
-	int		i;
-	int		j;
+	int i;
 
 	i = 0;
-	j = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	new_strink = (char *)malloc(sizeof(char) *
-		(ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!new_strink)
-		return (NULL);
-	while (s1[i])
+	if (!s)
+		return ;
+	while (s[i])
 	{
-		new_strink[i] = s1[i];
+		ft_putchar(s[i]);
 		i++;
 	}
-	while (s2[j])
-	{
-		new_strink[i + j] = s2[j];
-		j++;
-	}
-	new_strink[i + j] = '\0';
-	return (new_strink);
 }

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_strnew.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mlokhors <mlokhors@student.codam.nl>         +#+                     */
+/*   By: mlokhors <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/22 13:08:34 by mlokhors       #+#    #+#                */
-/*   Updated: 2019/04/12 12:10:32 by mlokhors      ########   odam.nl         */
+/*   Created: 2019/03/27 18:49:29 by mlokhors       #+#    #+#                */
+/*   Updated: 2019/08/03 01:17:56 by mark          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-
-size_t		ft_strlen(const char *s)
+char	*ft_strnew(size_t size)
 {
-	size_t i;
+	char	*a;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	a = (char *)malloc(sizeof(char) * size + 1);
+	if (!a)
+		return (NULL);
+	ft_bzero(a, size + 1);
+	return (a);
 }

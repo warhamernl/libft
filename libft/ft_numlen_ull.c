@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putstr.c                                        :+:    :+:            */
+/*   ft_numlen_ull.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mlokhors <marvin@codam.nl>                   +#+                     */
+/*   By: mlokhors <mlokhors@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/28 12:59:58 by mlokhors      #+#    #+#                 */
-/*   Updated: 2019/04/06 21:33:05 by mlokhors      ########   odam.nl         */
+/*   Created: 2019/08/28 15:44:44 by mlokhors       #+#    #+#                */
+/*   Updated: 2019/09/25 23:16:34 by mlokhors      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr(char const *s)
+int		ft_numlen_ull(unsigned long long nb, int base)
 {
 	int i;
 
 	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
+	if (nb == 0)
 	{
-		ft_putchar(s[i]);
+		i = 1;
+		return (i);
+	}
+	while (nb != 0)
+	{
+		nb /= base;
 		i++;
 	}
+	return (i);
 }

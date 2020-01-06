@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strnew.c                                        :+:    :+:            */
+/*   ft_strtrim.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mlokhors <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/27 18:49:29 by mlokhors      #+#    #+#                 */
-/*   Updated: 2019/04/06 19:15:17 by mlokhors      ########   odam.nl         */
+/*   Created: 2019/03/30 18:22:42 by mlokhors       #+#    #+#                */
+/*   Updated: 2019/08/10 22:58:37 by mark          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strnew(size_t size)
+char	*ft_strtrim(char const *s)
 {
-	char	*a;
-	size_t	i;
+	size_t	begin;
+	size_t	end;
+	char	*trimmed;
 
-	i = 0;
-	a = (char *)malloc(sizeof(char) * size + 1);
-	if (!a)
+	if (!s)
 		return (NULL);
-	ft_bzero(a, size + 1);
-	return (a);
+	end = ft_strlen(s);
+	begin = 0;
+	while (s[begin] == ' ' || s[begin] == '\n' || s[begin] == '\t')
+		begin++;
+	if (begin == end)
+		begin = 0;
+	while (s[end - 1] == ' ' || s[end - 1] == '\n' || s[end - 1] == '\t')
+		end--;
+	trimmed = ft_strsub(s, (unsigned int)begin, (end - begin));
+	if (!trimmed)
+		return (NULL);
+	return (trimmed);
 }

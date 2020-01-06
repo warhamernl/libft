@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strtrim.c                                       :+:    :+:            */
+/*   ft_strjoin.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mlokhors <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/30 18:22:42 by mlokhors      #+#    #+#                 */
-/*   Updated: 2019/04/07 16:12:48 by mlokhors      ########   odam.nl         */
+/*   Created: 2019/03/27 22:11:16 by mlokhors       #+#    #+#                */
+/*   Updated: 2019/09/29 14:13:41 by mlokhors      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strtrim(char const *s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	begin;
-	size_t	end;
-	int		index;
-	char	*trimmed;
+	char	*new_strink;
+	int		i;
+	int		j;
 
-	if (!s)
+	i = 0;
+	j = 0;
+	if (!s1 || !s2)
 		return (NULL);
-	index = 0;
-	end = ft_strlen(s);
-	begin = 0;
-	while (s[begin] == ' ' || s[begin] == '\n' || s[begin] == '\t')
-		begin++;
-	if (begin == end)
-		begin = 0;
-	while (s[end - 1] == ' ' || s[end - 1] == '\n' || s[end - 1] == '\t')
-		end--;
-	trimmed = ft_strsub(s, (unsigned int)begin, (end - begin));
-	if (!trimmed)
+	new_strink = (char *)malloc(sizeof(char) *
+		(ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!new_strink)
 		return (NULL);
-	return (trimmed);
+	while (s1[i])
+	{
+		new_strink[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		new_strink[i + j] = s2[j];
+		j++;
+	}
+	new_strink[i + j] = '\0';
+	return (new_strink);
 }
