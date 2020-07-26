@@ -8,4 +8,4 @@ There is not much to explain here only about the usage.
 
 git clone the folder and then go inside the libft folder with your terminal.
 
-type in make to compile the libary.
+type in 'make' to compile the libary.
